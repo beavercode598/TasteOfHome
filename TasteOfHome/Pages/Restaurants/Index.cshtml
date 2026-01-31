@@ -1,0 +1,26 @@
+﻿@page
+@model TasteOfHome.Pages.Restaurants.IndexModel
+
+<h1>Restaurants</h1>
+
+<ul>
+    @foreach (var r in Model.Restaurants)
+    {
+        <li>
+            <strong>@r.Name</strong>
+            (@r.Cuisine) - @r.Location
+            <br />
+            <small>
+                Dietary:
+                @if (r.DietaryTags != null && r.DietaryTags.Any())
+                {
+                    @string.Join(", ", r.DietaryTags)
+                }
+                else
+                {
+                    <span>None</span>
+                }
+            </small>
+        </li>
+    }
+</ul>
