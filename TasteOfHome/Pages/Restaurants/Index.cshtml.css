@@ -1,0 +1,87 @@
+﻿.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar container */
+.sidebar {
+    width: 260px;
+    background-color: #fff;
+    border-right: 1px solid #eee;
+    padding: 1.25rem;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+/* Header */
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    color: #ff6f3d;
+    margin-bottom: 1rem;
+}
+
+.filter-icon {
+    font-size: 1.1rem;
+}
+
+.sidebar-title {
+    font-size: 1rem;
+}
+
+/* Clear button */
+.clear-filters {
+    display: block;
+    text-align: center;
+    padding: 0.5rem;
+    border: 1px solid #ffd2c2;
+    border-radius: 6px;
+    color: #ff6f3d;
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+    .clear-filters:hover {
+        background-color: #fff4ef;
+    }
+
+/* Filter sections */
+.filter-section {
+    margin-bottom: 1.5rem;
+}
+
+    .filter-section h4 {
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+        color: #444;
+    }
+
+.filterLabel{
+
+}
+/* Checkbox items */
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+    .checkbox-item input {
+        accent-color: #ff6f3d;
+    }
+
+/* Main content */
+.content {
+    flex: 1;
+    padding: 2rem;
+    background-color: #fafafa;
+}

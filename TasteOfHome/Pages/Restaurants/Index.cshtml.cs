@@ -7,27 +7,38 @@ namespace TasteOfHome.Pages.Restaurants
 {
     public class IndexModel : PageModel
     {
+        //Create list of all Restaurants
         public List<Restaurant> Restaurants { get; set; } = new();
 
+        //Set list for the selected dietary filters
         [BindProperty(SupportsGet = true)]
         public List<String> SelectedDietaryFilters{ get; set; } = new();
 
-        //public List<string> DietaryTagList = new List<string> { "Vegetarian", "Vegan", "Halal", "Gluten-Free" };
+        //Create another list for the selected location filter
+        [BindProperty(SupportsGet = true)]
+        public List<String> SelectedCuisineFilter{ get; set; } = new();
 
         public void OnGet()
         {
+            //Stating variables (full list and empty list for filters)
             var allRestaurants = RestaurantSeed.GetRestaurants();
+            IEnumerable<Restaurant> filteredRestaurants = allRestaurants;
 
+            //Apply any dietary filters
             if (SelectedDietaryFilters.Any())
             {
-                Restaurants = allRestaurants
-                    .Where(r => SelectedDietaryFilters.All(filter => r.DietaryTags.Contains(filter)))
-                    .ToList();
+                filteredRestaurants = filteredRestaurants.Where(r =>
+                    SelectedDietaryFilters.All(filter => r.DietaryTags.Contains(filter)));
             }
-            else
+            
+            //Apply any location filters
+            if (SelectedCuisineFilter.Any())
             {
-                Restaurants = allRestaurants;
+                filteredRestaurants = filteredRestaurants.Where(r =>
+                    SelectedCuisineFilter.Contains(r.Cuisine));
             }
+
+            Restaurants = filteredRestaurants.ToList();
         }
     }
 }
